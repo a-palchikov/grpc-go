@@ -279,7 +279,7 @@ func newHTTP2Client(connectCtx, ctx context.Context, addr resolver.Address, opts
 		}
 		conn, authInfo, err = transportCreds.ClientHandshake(connectCtx, addr.ServerName, rawConn)
 		if logger.V(logLevel) {
-			logger.Infof("[grpc]: reset conn deadline after handshake at", time.Since(handshakeStart), "with err", err)
+			logger.Info("[grpc]: reset conn deadline after handshake in", time.Since(handshakeStart), "with err", err)
 		}
 		rawConn.SetDeadline(time.Time{})
 		if err != nil {
